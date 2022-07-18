@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Offers = () => {
+const Offers = () => {
   return (
     <div>
       <h1>
@@ -9,3 +9,5 @@ export const Offers = () => {
     </div>
   );
 };
+
+export default Offers;
