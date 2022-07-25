@@ -5,10 +5,8 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase
 import { db } from '../firebase.config';
  import {ReactComponent as ArrowRightIcon,
 } from '../assets/svg/keyboardArrowRightIcon.svg';
-
-import {
-  ReactComponent as visibilityIcon,
-} from '../assets/svg/visibilityIcon.svg';
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState (false);
@@ -27,12 +25,14 @@ const SignUp = () => {
       [e.target.id]: e.target.value,
     }));
   };
+  
 
   const onSubmit = async (e) => {
     e.preventDefault()
 
     try {
       const auth = getAuth();
+     
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -44,6 +44,13 @@ const SignUp = () => {
       updateProfile(auth.currentUser, {
         displayName: name
       })
+
+      const formDataCopy = { ...formData }
+      console.log(formDataCopy)
+      delete formDataCopy.password
+      formDataCopy.timestamp = serverTimestamp();
+      await setDoc(doc(db, 'users', user.uid), formDataCopy)
+      
       navigate('/')
     } catch (error) {
       console.log(error)
@@ -83,7 +90,7 @@ const SignUp = () => {
             </div>
             <Link to="/forgot-password" className='forgotPasswordLink'> Forgot Password</Link>
             <div className="signUpBar">
-              <p className="signUpText"> Sign In</p>
+              <p className="signUpText"> Sign Up</p>
               <button className="signUpButton">
                 <ArrowRightIcon fill="#ffffff" width='34px' height='34px' />
 

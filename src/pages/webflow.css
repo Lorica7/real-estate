@@ -1,0 +1,109 @@
+.show2 {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+
+.partial-border {
+    position: relative;
+}
+
+.partial-border:after {
+    content: '';
+    width: 25%;
+    height: 2px;
+    background: #07eeee;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+
+}
+
+.partial-border:before {
+    content: '';
+    width: 2px;
+    height: 50%;
+    background: #07eeee;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.bl:after {
+    content: '';
+    width: 25%;
+    height: 2px;
+    background: #07eeee;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+
+}
+
+.bl:before {
+    content: '';
+    width: 2px;
+    height: 50%;
+    background: #07eeee;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+}
+
+.border-left:after {
+    content: '';
+    width: 25%;
+    height: 2px;
+    background: #07eeee;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+
+}
+
+.border-left:before {
+    content: '';
+    width: 2px;
+    height: 50%;
+    background: #07eeee;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+}
+
+.text-border {
+    position: relative;
+}
+
+.text-border:after {
+    content: '';
+    width: 25%;
+    height: 2px;
+    background: #07eeee;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+
+}
+
+.text-border:before {
+    content: '';
+    width: 2px;
+    height: 50%;
+    background: #07eeee;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.zero-vis {
+    background: none;
+    display: none;
+}
+
+.open {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px) contrast(60%);
+}
